@@ -1,0 +1,15 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block extracss %}
+    {% comment %} <link rel="stylesheet" href="{% static 'main/css/index.css' %}"> {% endcomment %}
+{% endblock extracss %}
+
+{% block content %}
+    <h1>Profile page</h1>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+
+{% endblock content %}

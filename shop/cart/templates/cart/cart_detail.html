@@ -1,0 +1,85 @@
+{% extends "main/base.html" %} {% load static %} {% block extracss %}
+<link rel="stylesheet" href="{% static 'cart/css/cart.css' %}" />
+{% endblock extracss %} {% block content %}
+<section class="cart-container">
+  <h2>Ваш кошик</h2>
+
+  {% if cart_items %}
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Зображення</th>
+        <th>Назва</th>
+        <th>Ціна</th>
+        <th>Кількість</th>
+        <th>Сума</th>
+        <th>Дії</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart_items %}
+        <tr id="cart-row-{{ item.product.id }}">
+          <td>
+            <img
+              src="{{ item.product.img }}"
+              alt="{{ item.product.name }}"
+              class="cart-img"
+            />
+          </td>
+          <td class="name">{{ item.product.name }}</td>
+          <td>{% if item.product.discount %}{{ item.product.sell_price }}{% else %}{{ item.product.price }}{% endif %} грн</td>
+          <td>
+            <form action="{% url 'cart_update' item.product.id %}" method="post" class="quantity-form">
+                {% csrf_token %}
+                <button type="submit" name="action" value="decrease" class="btn btn-small">–</button>
+                <span class="quantity">{{ item.quantity }}</span>
+                <button type="submit" name="action" value="increase" class="btn btn-small">+</button>
+            </form>
+
+          </td>
+          <td>
+            {% if item.get_total_price %}
+              {{ item.get_total_price }}
+            {% else %}
+              {{ item.total_price }}
+            {% endif %} грн
+          </td>
+          
+          <td>
+            <form
+              action="{% url 'cart_remove' item.product.id %}"
+              method="post"
+              class="remove-form"
+            >
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">✖</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Загальна сума -->
+  {% comment %} <div
+    id="cart-total"
+    class="cart-total"
+    hx-get="{% url 'cart_detail' %}"
+    hx-trigger="revealed from:body"
+    hx-target="#cart-total"
+    hx-swap="outerHTML"
+  >
+    <p><strong>Загальна сума:</strong> {{ cart_total }} грн</p>
+    <button class="btn btn-primary">Оформити замовлення</button>
+  </div> {% endcomment %}
+  <div id="cart-total" class="cart-total">
+    <p><strong>Загальна сума:</strong> {{ cart_total }} грн</p>
+    <button class="btn btn-primary">Оформити замовлення</button>
+  </div>
+
+
+  {% else %}
+  <p>Кошик порожній</p>
+  {% endif %}
+</section>
+{% endblock content %}

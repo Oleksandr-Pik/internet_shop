@@ -1,0 +1,9 @@
+:root {
+    --c-accent: #E67E22;
+    --c-txt-main: #2C2C2C;
+    --c-bg-primary: #2C3E50;
+    --c-bg-secondary: #ECF0F1;
+    --font-family: "Inter", sans-serif;
+
+    --animation-transition: all 0.3s ease-in-out;
+}

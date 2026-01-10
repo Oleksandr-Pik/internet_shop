@@ -1,0 +1,20 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block extracss %}
+    <!-- <link rel="stylesheet" href="{% static 'main/css/index.css' %}"> -->
+{% endblock extracss %}
+
+{% block content %}
+    <h1>Register</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Вкажіть ваш Email" required>
+        <input type="password" name="password" placeholder="Вкажіть ваш пароль" required>
+        <input type="password" name="confirm_password" placeholder="Повторіть ваш пароль" required>
+        <!-- {{ form.as_p }} -->
+        <button type="submit" class="btn">Sign Up</button>
+        {{ form.errors }}
+    </form>
+    <p><a href="{% url 'login' %}">Я вже маю аккаунт</a></p>
+{% endblock content %}

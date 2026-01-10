@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElectroShop | {{page_name}}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/theme-ocean.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}" />
+    {% block extracss %}{% endblock extracss %}
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="{% url 'home' %}">
+          <img
+            src="{% static 'main/images/logo.png' %}"
+            alt="ElrctroShop Logo"
+            class="logo"
+          />
+        </a>
+        <!-- {% if user.is_authenticated %}
+            <p>
+                <span class="welcome-message">Welcome, {{ user.email }}!</span>
+                <a href="{% url 'logout' %}">Вийти</a>
+            </p>
+        {% endif %} -->
+        <nav>
+            <ul>
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Sign Up</a></li>
+                {% else %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li class="welcome-message">{{ user.email }} <a href="{% url 'logout' %}">Вийти</a></li>
+                    <!-- <li><a href="{% url 'logout' %}">Logout</a></li> -->
+                {% endif %}
+            </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main container">
+      <section class="content">
+        {% block content %}{% endblock content %}
+    </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">2025 &copy; ElectroShop</div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<tr id="cart-row-{{ item.product.id }}">
+  <td><img src="{{ item.product.img }}" alt="{{ item.product.name }}" class="cart-img" /></td>
+  <td>{{ item.product.name }}</td>
+  <td>{{ item.product.price }} грн</td>
+  <td>
+    <form 
+      hx-post="{% url 'cart_update' item.product.id %}" 
+      hx-target="#cart-row-{{ item.product.id }}"
+      hx-swap="outerHTML">
+      {% csrf_token %}
+      <button type="submit" name="action" value="decrease" class="btn btn-small">–</button>
+      <span class="quantity">{{ item.quantity }}</span>
+      <button type="submit" name="action" value="increase" class="btn btn-small">+</button>
+    </form>
+  </td>
+  <td>{{ item.get_total_price }} грн</td>
+  <td>
+    <form 
+      hx-post="{% url 'cart_remove' item.product.id %}" 
+      hx-target="#cart-row-{{ item.product.id }}"
+      hx-swap="outerHTML">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Видалити</button>
+    </form>
+  </td>
+</tr>

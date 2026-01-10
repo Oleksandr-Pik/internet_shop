@@ -1,0 +1,87 @@
+{% extends "main/base.html" %} 
+
+{% load static %} 
+
+{% block extracss %}
+  <!-- <link rel="stylesheet" href="{% static 'main/css/index.css' %}" /> -->
+  <link rel="stylesheet" href="{% static 'main/css/product.css' %}" />
+{% endblock extracss %} 
+
+{% block content %}
+<section class="product-card product-detail">
+  <div class="product-img">
+    <img src="{{ product.img }}" alt="{{ product.name }}" />
+  </div>
+  <div class="product-description">
+    <h2 class="product-title">{{ product.name }}</h2>
+    <p><strong>Бренд:</strong> {{ product.brand.name }}</p>
+    <p><strong>Категорія:</strong> {{ product.category.name }}</p>
+    {% if product.discount %}
+      <div class="price-block discont">
+          <p><strong>Ціна:</strong></p>
+          <p class="line">{{ product.price }}</p>
+          <p class="price">{{ product.sell_price }}  грн</p>
+        </div>
+    {% else %}
+      <div class="price-block">
+          <p class="price"><strong>Ціна:</strong> {{ product.price }} грн</p>
+      </div>
+    {% endif %}
+    <p class="description"><strong>Опис:</strong> {{ product.description }}</p>
+    <form 
+      action="{% url 'cart_add' product.id %}" 
+      method="post"
+      class="add-to-cart-form">
+      {% csrf_token %}
+      <button type="submit" class="btn">Додати в кошик</button>
+    </form>
+
+
+  </div>
+</section>
+
+<section class="reviews">
+  <h2>Залишити відгук</h2>
+  <form action="" method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn">Залишити відгук</button>
+  </form>
+
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="alert {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <h2>Відгуки користувачів</h2>
+  <div class="user-reviews">
+    {% if not reviews %}
+    <p>Ще ніхто не залишив відгук про цей товар</p>
+    {% endif %} 
+    {% for review in reviews %}
+    <div class="review-card">
+      <strong>{{ review.name }}</strong>
+      <p>{{ review.text }}</p>
+      <small>Оцінка: {{ review.rating }} ⭐ | {{ review.created_at }}</small>
+    </div>
+    <hr />
+    {% endfor %}
+  </div>
+</section>
+
+<section class="related-products">
+  <h2>Схожі товари</h2>
+  {% for p in related_products %}
+  <div class="related-item">
+    <a href="{% url 'product_view' product_id=p.id %}">
+      <img src="{{ p.img }}" alt="{{ p.name }}" style="max-width: 150px" />
+      <p>{{ p.name }}</p>
+      <p>Ціна: {{ p.price }} грн</p>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Підтвердження реєстрації</h2>
+    <p>Дякуємо за реєстрацію на нашому сайті! Будь ласка, натисніть на посилання нижче, щоб підтвердити вашу електронну адресу:</p>
+    <a href="{{ activation_link }}">Підтвердити електронну адресу</a>
+    <p>Якщо ви не реєструвалися на нашому сайті, просто ігноруйте цей лист.</p>
+    <p>З найкращими побажаннями,<br>Команда ElectroShop</p>
+</body>
+</html>

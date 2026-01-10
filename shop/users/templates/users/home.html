@@ -1,0 +1,16 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block extracss %}
+    <!-- <link rel="stylesheet" href="{% static 'main/css/index.css' %}"> -->
+{% endblock extracss %}
+
+{% block content %}
+    <h1>Welcome to the Auth Home page</h1>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.email }}! You are logged in.</p>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a>.</p>
+    {% endif %}
+    
+{% endblock content %}

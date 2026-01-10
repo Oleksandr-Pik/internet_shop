@@ -1,0 +1,21 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block extracss %}
+    {% comment %} <link rel="stylesheet" href="{% static 'main/css/index.css' %}"> {% endcomment %}
+{% endblock extracss %}
+
+{% block content %}
+    <h1>Login page</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Вкажіть ваш Email" required>
+        <input type="password" name="password" placeholder="Вкажіть ваш пароль" required>
+        <!-- {{ form.as_p }} -->
+        <button type="submit" class="btn">Login</button>
+        {{ form.errors }}
+    </form>
+    <p><a href="{% url 'register' %}">Я ще не маю аккаунта</a></p>
+    
+    
+{% endblock content %}

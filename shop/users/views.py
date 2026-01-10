@@ -3,7 +3,7 @@ from django.http import HttpRequest
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout, authenticate
 from typing import Literal
-from users.form import RegisterForm, LoginForm
+from users.forms import RegisterForm, LoginForm
 from users.models import ConfirmationCode
 from users.utils import merge_cart_to_user
 

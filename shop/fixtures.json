@@ -1,0 +1,316 @@
+[
+{
+  "model": "main.category",
+  "pk": 1,
+  "fields": {
+    "name": "Смартфони",
+    "description": "Опис категорії смартфони",
+    "image": "category/Смартфони.png"
+  }
+},
+{
+  "model": "main.category",
+  "pk": 2,
+  "fields": {
+    "name": "Ноутбуки",
+    "description": "Опис категорії ноутбуки",
+    "image": "category/Ноутбуки.png"
+  }
+},
+{
+  "model": "main.category",
+  "pk": 3,
+  "fields": {
+    "name": "Аксесуари",
+    "description": "Опис категорії Аксесуари",
+    "image": "category/Аксесуари.png"
+  }
+},
+{
+  "model": "main.category",
+  "pk": 4,
+  "fields": {
+    "name": "Різне",
+    "description": "Опмс категорії різне",
+    "image": "category/Різне.png"
+  }
+},
+{
+  "model": "main.category",
+  "pk": 5,
+  "fields": {
+    "name": "Телевізори",
+    "description": "Опис категорії Телевізори",
+    "image": "category/Телевізори.png"
+  }
+},
+{
+  "model": "main.category",
+  "pk": 7,
+  "fields": {
+    "name": "Принтери",
+    "description": "",
+    "image": ""
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 1,
+  "fields": {
+    "name": "Dell",
+    "country": "Не вказано"
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 2,
+  "fields": {
+    "name": "Samsung",
+    "country": "Не вказано"
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 3,
+  "fields": {
+    "name": "Xiaomi",
+    "country": "Китай"
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 4,
+  "fields": {
+    "name": "Не вказаний",
+    "country": "Не вказано"
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 5,
+  "fields": {
+    "name": "Apple",
+    "country": "США"
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 6,
+  "fields": {
+    "name": "Asus",
+    "country": "Не вказано"
+  }
+},
+{
+  "model": "main.brand",
+  "pk": 7,
+  "fields": {
+    "name": "Acer",
+    "country": "Не вказано"
+  }
+},
+{
+  "model": "main.product",
+  "pk": 1,
+  "fields": {
+    "name": "Мобільний телефон Xiaomi Redmi Note 14 8/256GB Midnight Black",
+    "description": "Екран (6.67\", AMOLED, 2400x1080) / MediaTek Helio G99 Ultra (2.2 ГГц + 2.0 ГГц) / потрійна основна камера: 108 Мп + 2 Мп + 2 Мп, фронтальна 20 Мп / ОЗП 8 ГБ / 256 ГБ вбудованої пам'яті + microSD (до 1 ТБ) / 3G / LTE / GPS / підтримка 2 SIM-карт (Nano-SIM) / Android 14 / 5500 мА·год",
+    "category": 1,
+    "brand": 3,
+    "year_manufacture": 2025,
+    "price": "7999.00",
+    "is_sells_better": true,
+    "image": "products/Redmi_Note_14.webp",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 2,
+  "fields": {
+    "name": "Мобільний телефон Xiaomi Redmi Note 14 Pro 8/256GB Aurora Purple",
+    "description": "Екран (6.67\", AMOLED, 2400x1080) / MediaTek Helio G100 Ultra (2.2 ГГц + 2.0 ГГц) / потрійна основна камера: 200 Мп + 8 Мп + 2 Мп, фронтальна 32 Мп / ОЗП 8 ГБ / 256 ГБ вбудованої пам'яті + microSD (до 1 ТБ) / 3G / LTE / GPS / підтримка 2 SIM-карт (Nano-SIM) / Android 14 / 5500 мА·год",
+    "category": 1,
+    "brand": 3,
+    "year_manufacture": 2025,
+    "price": "9999.00",
+    "is_sells_better": false,
+    "image": "products/Redmi_Note_14_Pro.webp",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 3,
+  "fields": {
+    "name": "Мобільний телефон Samsung Galaxy S24 8/256GB Onyx Black",
+    "description": "Екран (6.2\", Dynamic AMOLED 2X, 2340x1080) / Samsung Exynos 2400 (3.2 ГГц + 2.9 ГГц + 2.6 ГГц + 1.95 ГГц) / потрійна основна камера: 50 Мп + 12 Мп + 10 Мп, фронтальна 12 Мп / RAM 8 ГБ / 256 ГБ вбудованої пам'яті / 3G / LTE / 5G / GPS / підтримка 2х SIM-карток (Nano-SIM) / Android 14 / 4000 мА*год",
+    "category": 1,
+    "brand": 2,
+    "year_manufacture": 2025,
+    "price": "28899.00",
+    "is_sells_better": true,
+    "image": "products/Galaxy_S24.webp",
+    "is_available": true,
+    "discount": "5.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 4,
+  "fields": {
+    "name": "Мобільний телефон Apple iPhone 17 Pro 256GB Deep Blue",
+    "description": "Екран (6.3\", OLED (Super Retina XDR), 2622x1206) / Apple A19 Pro / основна потрійна камера: 48 Мп + 48 Мп + 48 Мп, фронтальна камера: 18 Мп / 256 ГБ вбудованої пам'яті / 3G / LTE / 5G / GPS / підтримка 2х СІМ-карт (Nano-SIM, eSIM) / iOS 26",
+    "category": 1,
+    "brand": 5,
+    "year_manufacture": 2025,
+    "price": "63999.00",
+    "is_sells_better": true,
+    "image": "products/IPhone_17_Pro.webp",
+    "is_available": true,
+    "discount": "10.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 5,
+  "fields": {
+    "name": "Ноутбук ASUS TUF Gaming A16 (2025) FA608UM-RV015 (90NR0KV1-M00880) Jaeger Gray / 16\" IPS WUXGA 165 Гц / AMD Ryzen 7 260 / RAM 16 ГБ / SSD 1 ТБ / GeForce RTX 5060, 8 ГБ (TDP 115 Вт)",
+    "description": "16\" IPS (1920x1200) WUXGA 165 Гц, матовий / AMD Ryzen 7 260 (3.8 - 5.1 ГГц) / RAM 16 ГБ / SSD 1 ТБ / nVidia GeForce RTX 5060, 8 ГБ (TDP 115 Вт) / без ОС / 2.2 кг",
+    "category": 2,
+    "brand": 6,
+    "year_manufacture": 2025,
+    "price": "56999.00",
+    "is_sells_better": true,
+    "image": "products/ASUS_TUF_Gaming_A16_2025.webp",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 6,
+  "fields": {
+    "name": "Ноутбук Dell 15 Laptop (210-BRNX_54Wh_WP) Carbon Black / 15.6\" WVA WUXGA 120 Гц / Intel Core i5-1334U / RAM 16 ГБ / SSD 512 ГБ / Windows 11 Pro",
+    "description": "15.6\" WVA (1920x1080) WUXGA 120 Гц, глянсовий з покриттям антивідблиску / Intel Core i5-1334U (1.3 - 4.6 ГГц) / RAM 16 ГБ / SSD 512 ГБ / Intel Iris Xe Graphics / Windows 11 Pro / 1.9 кг",
+    "category": 2,
+    "brand": 1,
+    "year_manufacture": 2025,
+    "price": "28999.00",
+    "is_sells_better": true,
+    "image": "",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 7,
+  "fields": {
+    "name": "Ноутбук Apple MacBook Pro 16\" M4 Pro 24/512GB 2024 (MX2X3UA/A) Space Black",
+    "description": "Екран 16.2\" Liquid Retina XDR (3456x2234) 120 Гц, глянсовий / Apple M4 Pro / RAM 24 ГБ / SSD 512 ГБ / Apple M4 Pro Graphics (20 ядер) / без ОД / Wi-Fi / Bluetooth / веб-камера / macOS Sequoia / 2.14 кг / космічний чорний",
+    "category": 2,
+    "brand": 5,
+    "year_manufacture": 2025,
+    "price": "139999.00",
+    "is_sells_better": false,
+    "image": "",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 8,
+  "fields": {
+    "name": "Ноутбук Samsung Chromebook 4 (XE310XBA-K02US)",
+    "description": "Процесор\r\n2-ядерний Intel Celeron N4020 (1.1 - 2.8 ГГц)\r\nОб'єм встановленої оперативної пам'яті\r\n4 ГБ",
+    "category": 2,
+    "brand": 2,
+    "year_manufacture": 2025,
+    "price": "5040.00",
+    "is_sells_better": false,
+    "image": "",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 9,
+  "fields": {
+    "name": "Ноутбук 2-в-1 Samsung Galaxy Book5 Pro 360 (NP960QHA-KG1US)",
+    "description": "Процесор\r\n8-ядерний Intel Core Ultra 7 256V (2.2 – 4.8 ГГц)\r\nОб'єм встановленої оперативної пам'яті\r\n16 ГБ\r\nОбсяг SSD\r\n1 ТБ",
+    "category": 2,
+    "brand": 2,
+    "year_manufacture": 2025,
+    "price": "81956.00",
+    "is_sells_better": true,
+    "image": "products/Samsung.webp",
+    "is_available": true,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 10,
+  "fields": {
+    "name": "Навушники",
+    "description": "Якысь там навушники",
+    "category": 3,
+    "brand": 4,
+    "year_manufacture": 2025,
+    "price": "100.00",
+    "is_sells_better": false,
+    "image": "products/NO_IMAGE.png",
+    "is_available": false,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 11,
+  "fields": {
+    "name": "Новий товар",
+    "description": "Опис товару",
+    "category": 4,
+    "brand": 4,
+    "year_manufacture": 2025,
+    "price": "1.00",
+    "is_sells_better": false,
+    "image": "",
+    "is_available": false,
+    "discount": "0.00",
+    "in_stock": true
+  }
+},
+{
+  "model": "main.product",
+  "pk": 12,
+  "fields": {
+    "name": "Новий товар зі знижкою",
+    "description": "Який сь опис",
+    "category": 4,
+    "brand": 4,
+    "year_manufacture": 2026,
+    "price": "34567.00",
+    "is_sells_better": false,
+    "image": "",
+    "is_available": true,
+    "discount": "15.00",
+    "in_stock": true
+  }
+}
+]

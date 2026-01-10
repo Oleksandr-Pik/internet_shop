@@ -1,6 +1,6 @@
 from main.base_views import BaseView
 from django.views import View
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 from django.shortcuts import redirect, get_object_or_404
 from django.http import JsonResponse
 from main.models import Product, Category, Brand

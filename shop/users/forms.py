@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from users.utils import send_activation_email
-from users.models import ConfirmationCode
+from users.models import ConfirmationCode, Profile
 from django.conf import settings
 
 User = get_user_model()
@@ -46,3 +46,19 @@ class RegisterForm(forms.Form):
 class LoginForm(forms.Form):
     email = forms.EmailField(max_length=150)
     password = forms.CharField()
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = (
+            "first_name",
+            "last_name",
+            "phone",
+            "city",
+            "address",
+            # "avatar",
+        )
+        widgets = {
+            "address": forms.Textarea(attrs={"rows": 3}),
+        }

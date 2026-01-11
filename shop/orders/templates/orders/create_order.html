@@ -1,0 +1,75 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'orders/css/orders.css' %}">
+{% endblock extracss %}
+
+{% block content %}
+    <h2>Оформлення замовлення</h2>
+    {% if cart_items %}
+        <table class="cart-table">
+            <thead>
+            <tr>
+                <th>Зображення</th>
+                <th>Назва</th>
+                <th>Ціна</th>
+                <th>Кількість</th>
+                <th>Сума</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in cart_items %}
+                <tr id="cart-row-{{ item.product.id }}">
+                <td>
+                    <img
+                    src="{{ item.product.img }}"
+                    alt="{{ item.product.name }}"
+                    class="cart-img"
+                    />
+                </td>
+                <td class="name">{{ item.product.name }}</td>
+                <td>{% if item.product.discount %}{{ item.product.sell_price }}{% else %}{{ item.product.price }}{% endif %} грн</td>
+                <td>
+                    <span class="quantity">{{ item.quantity }}</span>
+                </td>
+                <td>
+                    {% if item.get_total_price %}
+                    {{ item.get_total_price }}
+                    {% else %}
+                    {{ item.total_price }}
+                    {% endif %} грн
+                </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="cart-total" class="cart-total">
+            <p><strong>Загальна сума:</strong> {{ cart_total }} грн</p>
+        </div>
+    {% else %}
+
+    {% endif %}
+  
+    <form action="{% url 'cart_detail' %}" method="get">
+        {% csrf_token %}
+        <button class="btn btn-primary">Редагувати замовлення</button>
+    </form>
+
+    <h3>Введіть ваші дані для оформлення замовлення:</h3>
+    <form action="" method="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+    </form>
+
+
+    <form action="" method="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Підтвердити замовлення</button>
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+.profile-wrapper {
+    display: flex;
+    gap: 40px;
+}
+
+.profile-left,
+.profile-right {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    /* background: #f9f9f9; */
+}
+
+.profile-left p,
+.profile-info p {
+    margin: 10px 0;
+}
+
+.profile-form button {
+    margin-top: 15px;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+}

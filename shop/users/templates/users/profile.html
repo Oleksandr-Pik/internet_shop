@@ -1,15 +1,27 @@
-{% extends "users/base.html" %}
+{% extends "main/base.html" %}
 {% load static %}
 
 {% block extracss %}
-    {% comment %} <link rel="stylesheet" href="{% static 'main/css/index.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
 {% endblock extracss %}
 
 {% block content %}
-    <h1>Profile page</h1>
-    <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>First Name: {{ user.first_name }}</p>
-    <p>Last Name: {{ user.last_name }}</p>
+    <h2>Профіль користувача</h2>
+    <div class="profile-info">
+        {% comment %} <p><strong>Username:</strong> {{ user.username }}</p> {% endcomment %}
+        
+        <p><strong>Імʼя:</strong> {{ profile.first_name }}</p>
+        <p><strong>Прізвище:</strong> {{ profile.last_name }}</p>
+        <p><strong>Телефон:</strong> {{ profile.phone }}</p>
+        <p><strong>Місто:</strong> {{ profile.city }}</p>
+        <p><strong>Адреса:</strong> {{ profile.address }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        
+        <p><strong>Дата створення:</strong> {{ user.date_joined }}</p>
+        <p><strong>Остінній вхід:</strong> {{ user.last_login }}</p>
+        <p>Мої закази: <a href="#">Переглянути</a></p>
+        <p><a href="{% url 'profile_edit' %}" >Редагувати профіль</a></p>
+        <p><a href="{% url 'logout' %}">Вийти</a></p>
+    </div>
 
 {% endblock content %}

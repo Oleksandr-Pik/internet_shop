@@ -12,7 +12,7 @@ class ConfirmationCode(models.Model):
 
     def __str__(self):
         return f"ConfirmationCode(user={self.user.email}, code={self.code})"
-    
+
     @classmethod
     def process_code(cls, code: str) -> bool:
         try:
@@ -30,3 +30,16 @@ class ConfirmationCode(models.Model):
             self.code = str(uuid.uuid4())
         self.user.confirmation_codes.all().delete()
         return super().save(**kwargs)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    first_name = models.CharField("Імʼя", max_length=100, blank=True)
+    last_name = models.CharField("Прізвище", max_length=100, blank=True)
+    phone = models.CharField("Телефон", max_length=20, blank=True)
+    city = models.CharField("Місто", max_length=100, blank=True)
+    address = models.TextField("Адреса", blank=True)
+    # avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
+
+    def __str__(self):
+        return f"Profile({self.user})"

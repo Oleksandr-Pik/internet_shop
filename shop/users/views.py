@@ -3,8 +3,9 @@ from django.http import HttpRequest
 from django.shortcuts import redirect
 from django.contrib.auth import login, logout, authenticate
 from typing import Literal
-from users.forms import RegisterForm, LoginForm
-from users.models import ConfirmationCode
+from main.base_views import BaseView
+from users.forms import RegisterForm, LoginForm, ProfileForm
+from users.models import ConfirmationCode, Profile
 from users.utils import merge_cart_to_user
 
 
@@ -39,7 +40,7 @@ class HomeView(AuthTemplateView):
     required_user_type = "any"
 
 
-class LoginView(AuthTemplateView):
+class LoginView(AuthTemplateView, BaseView):
     template_name = "users/login.html"
     required_user_type = "anonymous"
 
@@ -65,27 +66,78 @@ class LoginView(AuthTemplateView):
         return self.render_to_response(self.get_context_data(form=form))
 
 
-class RegisterView(AuthTemplateView):
+class RegisterView(AuthTemplateView, BaseView):
     template_name = "users/register.html"
     required_user_type = "anonymous"
-    
+
     def _get_page_name(self, **kwargs):
         return "Реєстрація користувача"
-    
+
     def post(self, request: HttpRequest, *args, **kwargs): 
-         form = RegisterForm(request.POST)
-         if form.is_valid():
-             form.save()
-             return redirect("login")
-         return self.render_to_response(self.get_context_data(form=form))
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+        return self.render_to_response(self.get_context_data(form=form))
 
 
-class ProfileView(AuthTemplateView):
+class ProfileView(AuthTemplateView, BaseView):
     template_name = "users/profile.html"
     required_user_type = "logged_in"
 
     def _get_page_name(self, **kwargs):
         return "Профіль користувача"
+
+    def get_profile(self):
+        profile, created = Profile.objects.get_or_create(user=self.request.user)
+        return profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.get_profile()
+        context["profile"] = profile
+        context["form"] = ProfileForm(instance=profile)
+        return context
+
+    def post(self, request, *args, **kwargs):
+        profile = self.get_profile()
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+        context = self.get_context_data()
+        context["form"] = form
+        return self.render_to_response(context)
+
+
+class ProfileEditView(AuthTemplateView, BaseView):
+    template_name = "users/edit-profile.html"
+    required_user_type = "logged_in"
+
+    def _get_page_name(self, **kwargs):
+        return "Редагування профілю"
+
+    def get_profile(self):
+        profile, created = Profile.objects.get_or_create(user=self.request.user)
+        return profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.get_profile()
+        context["profile"] = profile
+        context["form"] = ProfileForm(instance=profile)
+        context["page_name"] = self._get_page_name()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        profile = self.get_profile()
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+        context = self.get_context_data()
+        context["form"] = form
+        return self.render_to_response(context)
 
 
 class LogoutView(AuthTemplateView):

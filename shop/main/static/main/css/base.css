@@ -114,6 +114,43 @@ a.nav-link {
     /* transform: scale(1.05); */
 }
 
+.cart-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.cart-link:hover {
+    color: var(--primary-color-dark);
+}
+
+.icon-cart {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cart-count {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 999px;
+    padding: 2px 6px;
+    font-size: 12px;
+    line-height: 1;
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cart-count.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
 .search {
     border: none;
     outline: none;

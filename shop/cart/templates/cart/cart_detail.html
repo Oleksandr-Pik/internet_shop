@@ -61,20 +61,13 @@
   </table>
 
   <!-- Загальна сума -->
-  {% comment %} <div
-    id="cart-total"
-    class="cart-total"
-    hx-get="{% url 'cart_detail' %}"
-    hx-trigger="revealed from:body"
-    hx-target="#cart-total"
-    hx-swap="outerHTML"
-  >
-    <p><strong>Загальна сума:</strong> {{ cart_total }} грн</p>
-    <button class="btn btn-primary">Оформити замовлення</button>
-  </div> {% endcomment %}
+    
   <div id="cart-total" class="cart-total">
     <p><strong>Загальна сума:</strong> {{ cart_total }} грн</p>
+    <form action="{% url 'create_order' %}" method="get">
+      {% csrf_token %}
     <button class="btn btn-primary">Оформити замовлення</button>
+    </form>
   </div>
 
 

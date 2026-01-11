@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (
+from cart.views import (
     CartDetailView,
     CartAddView,
     CartRemoveView,
